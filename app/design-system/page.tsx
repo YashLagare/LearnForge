@@ -1,46 +1,47 @@
 "use client";
 
-import React, { useState } from "react";
-import {
-  VertexLogo,
-  Breadcrumbs,
-  Pagination,
-} from "@/components/ui/navigation";
-import { Button } from "@/components/ui/button";
-import { Input, Select } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { StatusIndicator } from "@/components/ui/status-indicator";
-import { ProgressBar } from "@/components/ui/progress-bar";
+import { Button } from "@/components/ui/button";
 import {
   CourseCard,
-  VideoLessonCard,
-  TextLessonCard,
   ResourceCard,
+  TextLessonCard,
+  VideoLessonCard,
 } from "@/components/ui/cards";
 import {
-  BellOutline,
   BellFilled,
-  SearchOutline,
-  SearchFilled,
-  PlayOutline,
-  PlayFilled,
-  DocumentOutline,
-  DocumentFilled,
-  BookmarkOutline,
+  BellOutline,
   BookmarkFilled,
-  ChartOutline,
+  BookmarkOutline,
   ChartFilled,
-  ClockOutline,
-  ClockFilled,
-  UserOutline,
-  UserFilled,
+  ChartOutline,
   ChevronRight,
+  ClockFilled,
+  ClockOutline,
+  DocumentFilled,
+  DocumentOutline,
   ExternalLink,
   EyeIcon,
   GridIcon,
-  TargetIcon,
   PersonIcon,
+  PlayFilled,
+  PlayOutline,
+  SearchFilled,
+  SearchOutline,
+  TargetIcon,
+  UserFilled,
+  UserOutline,
 } from "@/components/ui/icons";
+import { Input, Select } from "@/components/ui/input";
+import {
+  Breadcrumbs,
+  Pagination,
+  VertexLogo,
+} from "@/components/ui/navigation";
+import { ProgressBar } from "@/components/ui/progress-bar";
+import { StatusIndicator } from "@/components/ui/status-indicator";
+import { useState } from "react";
+
 
 export default function VertexDesignSystemPage() {
   const [activeNav, setActiveNav] = useState("Courses");
