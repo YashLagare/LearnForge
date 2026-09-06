@@ -1,6 +1,6 @@
+import { Show, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
 import React from "react";
-import { SignInButton, SignUpButton, Show, UserButton } from "@clerk/nextjs";
-import { ChevronRight, BellOutline } from "./icons";
+import { BellOutline, ChevronRight } from "./icons";
 
 
 export const VertexLogo: React.FC<{ size?: number; className?: string }> = ({
@@ -49,11 +49,10 @@ export const Header: React.FC<HeaderProps> = ({
                 e.preventDefault();
                 onTabChange?.("courses");
               }}
-              className={`transition-colors ${
-                activeTab === "courses"
-                  ? "text-[#0F172A] font-semibold"
-                  : "text-[#64748B] hover:text-[#0F172A]"
-              }`}
+              className={`transition-colors ${activeTab === "courses"
+                ? "text-[#0F172A] font-semibold"
+                : "text-[#64748B] hover:text-[#0F172A]"
+                }`}
             >
               Courses
             </a>
@@ -63,11 +62,10 @@ export const Header: React.FC<HeaderProps> = ({
                 e.preventDefault();
                 onTabChange?.("my-learning");
               }}
-              className={`transition-colors ${
-                activeTab === "my-learning"
-                  ? "text-[#0F172A] font-semibold"
-                  : "text-[#64748B] hover:text-[#0F172A]"
-              }`}
+              className={`transition-colors ${activeTab === "my-learning"
+                ? "text-[#0F172A] font-semibold"
+                : "text-[#64748B] hover:text-[#0F172A]"
+                }`}
             >
               My Learning
             </a>
@@ -161,11 +159,10 @@ export const Pagination: React.FC<PaginationProps> = ({
       </button>
 
       <button
-        className={`w-9 h-9 flex items-center justify-center rounded-[8px] ${
-          currentPage === 1
-            ? "bg-white border-2 border-[#F97316] text-[#F97316] font-bold shadow-sm"
-            : "bg-white border border-[#E2E8F0] hover:bg-[#F1F5F9]"
-        }`}
+        className={`w-9 h-9 flex items-center justify-center rounded-[8px] ${currentPage === 1
+          ? "bg-white border-2 border-[#F97316] text-[#F97316] font-bold shadow-sm"
+          : "bg-white border border-[#E2E8F0] hover:bg-[#F1F5F9]"
+          }`}
       >
         1
       </button>
