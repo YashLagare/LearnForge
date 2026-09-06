@@ -1,5 +1,7 @@
 import React from "react";
-import { ChevronRight } from "./icons";
+import Image from "next/image";
+import { ChevronRight, BellOutline } from "./icons";
+
 
 export const VertexLogo: React.FC<{ size?: number; className?: string }> = ({
   size = 28,
@@ -24,6 +26,76 @@ export const VertexLogo: React.FC<{ size?: number; className?: string }> = ({
     </div>
   );
 };
+
+export interface HeaderProps {
+  activeTab?: "courses" | "my-learning";
+  onTabChange?: (tab: "courses" | "my-learning") => void;
+  userAvatarUrl?: string;
+}
+
+export const Header: React.FC<HeaderProps> = ({
+  activeTab = "courses",
+  onTabChange,
+  userAvatarUrl = "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80",
+}) => {
+  return (
+    <header className="w-full bg-[#FAFAFC]/80 backdrop-blur-md sticky top-0 z-50 px-6 md:px-12 py-4 border-b border-[#E2E8F0]/60">
+      <div className="max-w-[1440px] w-full mx-auto flex items-center justify-between">
+        <div className="flex items-center gap-10">
+          <VertexLogo size={28} />
+          <nav className="hidden sm:flex items-center gap-8 text-[14px] font-medium text-[#334155]">
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                onTabChange?.("courses");
+              }}
+              className={`transition-colors ${
+                activeTab === "courses"
+                  ? "text-[#0F172A] font-semibold"
+                  : "text-[#64748B] hover:text-[#0F172A]"
+              }`}
+            >
+              Courses
+            </a>
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                onTabChange?.("my-learning");
+              }}
+              className={`transition-colors ${
+                activeTab === "my-learning"
+                  ? "text-[#0F172A] font-semibold"
+                  : "text-[#64748B] hover:text-[#0F172A]"
+              }`}
+            >
+              My Learning
+            </a>
+          </nav>
+        </div>
+
+        <div className="flex items-center gap-5">
+          <button className="text-[#64748B] hover:text-[#0F172A] transition-colors p-1.5 rounded-full hover:bg-[#F1F5F9] cursor-pointer">
+            <BellOutline size={20} />
+          </button>
+          <div className="w-9 h-9 rounded-full overflow-hidden border border-[#E2E8F0] shadow-sm shrink-0 relative">
+            <Image
+              src={userAvatarUrl}
+              alt="User Avatar"
+              width={36}
+              height={36}
+              unoptimized
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+};
+
+
 
 export interface BreadcrumbItem {
   label: string;
@@ -80,7 +152,7 @@ export const Pagination: React.FC<PaginationProps> = ({
       >
         &lt;
       </button>
-      
+
       <button
         className={`w-9 h-9 flex items-center justify-center rounded-[8px] ${
           currentPage === 1

@@ -8,7 +8,10 @@ export interface CourseCardProps {
   level?: string;
   duration?: string;
   modulesCount?: string;
+  icon?: React.ReactNode;
   logoLetter?: string;
+  logoBg?: string;
+  logoColor?: string;
   onClick?: () => void;
 }
 
@@ -18,40 +21,53 @@ export const CourseCard: React.FC<CourseCardProps> = ({
   level = "Intermediate",
   duration = "18h 24m",
   modulesCount = "12 modules",
+  icon,
   logoLetter = "N",
+  logoBg = "bg-[#0F172A]",
+  logoColor = "text-white",
   onClick,
 }) => {
   return (
     <div
       onClick={onClick}
-      className="bg-white border border-[#E2E8F0] rounded-[16px] p-6 shadow-sm hover:shadow-md hover:border-[#CBD5E1] transition-all duration-200 flex flex-col justify-between cursor-pointer group"
+      className="bg-white border border-[#E2E8F0] rounded-[20px] p-6 shadow-sm hover:shadow-md hover:border-[#CBD5E1] transition-all duration-200 flex flex-col justify-between cursor-pointer group"
+
     >
       <div>
-        <div className="w-10 h-10 rounded-[10px] bg-[#0F172A] text-white font-bold text-lg flex items-center justify-center mb-4 shadow-sm">
-          {logoLetter}
+        <div className="mb-6">
+          {icon ? (
+            <div className="w-12 h-12 flex items-center justify-center">
+              {icon}
+            </div>
+          ) : (
+            <div className={`w-12 h-12 rounded-[12px] ${logoBg} ${logoColor} font-bold text-xl flex items-center justify-center shadow-sm`}>
+              {logoLetter}
+            </div>
+          )}
         </div>
-        <h3 className="text-[18px] font-semibold text-[#0F172A] group-hover:text-[#F97316] transition-colors leading-snug mb-2">
+        <h3 className="text-[20px] font-bold font-serif text-[#0F172A] group-hover:text-[#F97316] transition-colors leading-snug mb-3">
           {title}
         </h3>
-        <p className="text-[14px] text-[#64748B] leading-relaxed mb-6">
+        <p className="text-[14px] text-[#64748B] leading-relaxed mb-8">
           {description}
         </p>
       </div>
 
-      <div className="flex items-center gap-4 text-[12px] font-medium text-[#64748B] pt-4 border-t border-[#F1F5F9]">
-        <div className="flex items-center gap-1.5">
-          <ChartOutline size={16} className="text-[#64748B]" />
-          <span>{level}</span>
+      <div className="flex items-center justify-between sm:justify-start gap-3 md:gap-4 text-[12px] font-medium text-[#64748B] pt-4 border-t border-[#F1F5F9]">
+        <div className="flex items-center gap-1.5 shrink-0 whitespace-nowrap">
+          <ChartOutline size={16} className="text-[#64748B] shrink-0" />
+          <span className="whitespace-nowrap">{level}</span>
         </div>
-        <div className="flex items-center gap-1.5">
-          <ClockOutline size={16} className="text-[#64748B]" />
-          <span>{duration}</span>
+        <div className="flex items-center gap-1.5 shrink-0 whitespace-nowrap">
+          <ClockOutline size={16} className="text-[#64748B] shrink-0" />
+          <span className="whitespace-nowrap">{duration}</span>
         </div>
-        <div className="flex items-center gap-1.5">
-          <GridIcon size={16} className="text-[#64748B]" />
-          <span>{modulesCount}</span>
+        <div className="flex items-center gap-1.5 shrink-0 whitespace-nowrap">
+          <GridIcon size={16} className="text-[#64748B] shrink-0" />
+          <span className="whitespace-nowrap">{modulesCount}</span>
         </div>
       </div>
+
     </div>
   );
 };
@@ -72,7 +88,7 @@ export const VideoLessonCard: React.FC<VideoLessonCardProps> = ({
   onWatch,
 }) => {
   return (
-    <div className="bg-white border border-[#E2E8F0] rounded-[16px] p-6 shadow-sm hover:shadow-md hover:border-[#CBD5E1] transition-all duration-200 flex flex-col justify-between">
+    <div className="bg-white border border-[#E2E8F0] rounded-[20px] p-7 shadow-sm hover:shadow-md hover:border-[#CBD5E1] transition-all duration-200 flex flex-col justify-between">
       <div>
         <div className="mb-3">
           <Badge variant="video" />
@@ -115,7 +131,7 @@ export const TextLessonCard: React.FC<TextLessonCardProps> = ({
   onView,
 }) => {
   return (
-    <div className="bg-white border border-[#E2E8F0] rounded-[16px] p-6 shadow-sm hover:shadow-md hover:border-[#CBD5E1] transition-all duration-200 flex flex-col justify-between">
+    <div className="bg-white border border-[#E2E8F0] rounded-[20px] p-7 shadow-sm hover:shadow-md hover:border-[#CBD5E1] transition-all duration-200 flex flex-col justify-between">
       <div>
         <div className="mb-3">
           <Badge variant="lesson" />
@@ -156,7 +172,7 @@ export const ResourceCard: React.FC<ResourceCardProps> = ({
   onDownload,
 }) => {
   return (
-    <div className="bg-white border border-[#E2E8F0] rounded-[16px] p-6 shadow-sm hover:shadow-md hover:border-[#CBD5E1] transition-all duration-200 flex flex-col justify-between">
+    <div className="bg-white border border-[#E2E8F0] rounded-[20px] p-7 shadow-sm hover:shadow-md hover:border-[#CBD5E1] transition-all duration-200 flex flex-col justify-between">
       <div>
         <div className="w-10 h-10 rounded-[10px] bg-[#F1F5F9] text-[#334155] flex items-center justify-center mb-4">
           <DocumentOutline size={20} />

@@ -174,3 +174,17 @@ export const PersonIcon: React.FC<IconProps> = ({ size = 24, className = "", ...
     <path d="M12 6v6m0 0l-3 4m3-4l3 4M8 8h8" />
   </svg>
 );
+
+export const StarOutline: React.FC<IconProps> = ({ size = 24, className = "", ...props }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} {...props}>
+    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+  </svg>
+);
+
+export const DockerIcon: React.FC<{ size?: number; className?: string }> = ({ size = 48, className = "" }) => (
+  <svg width={size} height={size} viewBox="0 0 48 48" fill="none" className={className}>
+    <path d="M19 14h5v4h-5zM13 14h5v4h-5zM13 19h5v4h-5zM19 19h5v4h-5zM25 19h5v4h-5zM31 19h5v4h-5zM19 9h5v4h-5zM7 19h5v4H7zM13 24h5v4h-5zM19 24h5v4h-5zM25 24h5v4h-5zM31 24h5v4h-5z" fill="#0284C7" />
+    <path d="M43.5 25.5c-1.5-1-3.5-1.5-5.5-1-1-1.5-2.5-2.5-4.5-2.5-1.5 0-3 .5-4 1.5H3v6c0 6.5 5.5 12 12 12h14c7.5 0 13.5-6 13.5-13.5v-1c.5-.5 1-1 1-1.5z" fill="#38BDF8" />
+  </svg>
+);
+

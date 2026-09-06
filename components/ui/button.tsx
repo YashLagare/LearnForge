@@ -18,7 +18,7 @@ export const Button: React.FC<ButtonProps> = ({
   disabled,
   ...props
 }) => {
-  const baseStyles = "inline-flex items-center justify-center font-medium transition-all duration-150 rounded-[12px] focus:outline-none focus:ring-2 focus:ring-[#F97316] focus:ring-offset-2 disabled:cursor-not-allowed";
+  const baseStyles = "inline-flex items-center justify-center font-medium transition-all duration-150 rounded-[12px] focus:outline-none focus:ring-2 focus:ring-[#F97316] focus:ring-offset-2 disabled:cursor-not-allowed whitespace-nowrap";
 
   const sizeStyles = size === "default" 
     ? "h-[44px] px-4 text-[15px] gap-2" 
@@ -37,9 +37,10 @@ export const Button: React.FC<ButtonProps> = ({
       disabled={disabled}
       {...props}
     >
-      {iconLeft && <span className="shrink-0">{iconLeft}</span>}
-      <span>{children}</span>
-      {iconRight && <span className="shrink-0">{iconRight}</span>}
+      {iconLeft && <span className="shrink-0 inline-flex items-center">{iconLeft}</span>}
+      <span className="inline-flex items-center gap-2 shrink-0">{children}</span>
+      {iconRight && <span className="shrink-0 inline-flex items-center">{iconRight}</span>}
     </button>
   );
 };
+
