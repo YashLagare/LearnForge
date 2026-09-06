@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+import { SignInButton, SignUpButton, Show, UserButton } from "@clerk/nextjs";
 import { ChevronRight, BellOutline } from "./icons";
 
 
@@ -36,7 +36,6 @@ export interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({
   activeTab = "courses",
   onTabChange,
-  userAvatarUrl = "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80",
 }) => {
   return (
     <header className="w-full bg-[#FAFAFC]/80 backdrop-blur-md sticky top-0 z-50 px-6 md:px-12 py-4 border-b border-[#E2E8F0]/60">
@@ -75,25 +74,33 @@ export const Header: React.FC<HeaderProps> = ({
           </nav>
         </div>
 
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-4">
           <button className="text-[#64748B] hover:text-[#0F172A] transition-colors p-1.5 rounded-full hover:bg-[#F1F5F9] cursor-pointer">
             <BellOutline size={20} />
           </button>
-          <div className="w-9 h-9 rounded-full overflow-hidden border border-[#E2E8F0] shadow-sm shrink-0 relative">
-            <Image
-              src={userAvatarUrl}
-              alt="User Avatar"
-              width={36}
-              height={36}
-              unoptimized
-              className="w-full h-full object-cover"
-            />
-          </div>
+          <Show when="signed-out">
+            <div className="flex items-center gap-2.5">
+              <SignInButton mode="modal">
+                <button className="h-[38px] px-3.5 text-[14px] font-medium text-[#334155] bg-white border border-[#E2E8F0] rounded-[10px] hover:border-[#F97316] hover:text-[#F97316] transition-all duration-150 cursor-pointer">
+                  Sign In
+                </button>
+              </SignInButton>
+              <SignUpButton mode="modal">
+                <button className="h-[38px] px-3.5 text-[14px] font-medium text-white bg-[#F97316] hover:bg-[#EA580C] rounded-[10px] transition-all duration-150 shadow-xs cursor-pointer">
+                  Sign Up
+                </button>
+              </SignUpButton>
+            </div>
+          </Show>
+          <Show when="signed-in">
+            <UserButton appearance={{ elements: { avatarBox: "w-9 h-9 rounded-full" } }} />
+          </Show>
         </div>
       </div>
     </header>
   );
 };
+
 
 
 
